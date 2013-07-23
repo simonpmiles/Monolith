@@ -254,6 +254,60 @@ function blockquotes( $atts, $content = null ) {
 }
 
 /**
+ * Renders a media list of pages based on page ID ie [pages ids="21,34,75....."]
+ * @param array $atts
+ */
+
+
+function pages_shortcode($atts, $content = null) {
+
+	if(is_array($atts))
+	{
+		if(array_key_exists('ids', $atts))
+		{
+			$page_ids = array();
+			$page_ids = explode(',', $atts['ids']);
+			
+			$args = array(
+				'post__in' => $page_ids,
+				'post_type' => 'page',
+				'order' => 'ASC',
+				'orderby' => 'menu_order'
+	
+			);
+			
+			$pages = new wp_query($args);
+			$html = '';
+	
+			while ( $pages->have_posts() ) : $pages->the_post();
+						
+				
+		
+				$html .= '<div class="media">';
+				$html .= '<div id="childpage-item-' . get_the_id() . '">';
+				$html .= '<div class="row">';
+				$html .= '<div class="span2">';
+				$html .= '<a href="' . get_permalink() . '">' . get_the_post_thumbnail($post->ID, 'page-thumb') . '</a>';
+				$html .= '</div>';
+				$html .= '<div class="span10">';
+				$html .= '<div class="media-body">';
+				$html .= '<a href="' . get_permalink() . '"><h3 class="media-heading">' . get_the_title() . '</h3></a>';
+				$html .= get_the_excerpt();
+				$html .= '</div>';
+				$html .= '</div>';
+				$html .= '</div>';
+				$html .= '</div>';
+				$html .= '</div>';//end media div*/
+			
+			endwhile;
+			wp_reset_query();
+			
+			return $html;
+		}
+	}			
+}//end function
+
+/**
  * childpages shortcode renders a list of childpages 'list' 'grid' 'tabs' 'tabs-accordion' 'accordion' 'heading-accordion'=================================
  * @param array $atts
  * @param string $content
@@ -552,4 +606,5 @@ add_shortcode('block-message', 'block_messages');
 add_shortcode('blockquote', 'blockquotes');
 add_shortcode('childpages', 'childpages');
 add_shortcode('columns', 'columns_shortcode');
+add_shortcode('pages', 'pages_shortcode');
 ?>
