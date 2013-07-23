@@ -5,8 +5,9 @@
 	<script src="<?php echo get_stylesheet_directory_uri(); ?>/js/modernizr.js"></script>
 	<script src="<?php echo get_stylesheet_directory_uri(); ?>/js/css_browser_selector.js"></script>
 	<script src="<?php echo get_stylesheet_directory_uri(); ?>/js/holder.js"></script>
-
-    <!-- bootstrap js -->
+	<script src="<?php echo get_stylesheet_directory_uri(); ?>/js/placeholder.js"></script>
+	
+    <!-- los bootstrap js -->
     <script src="<?php echo get_stylesheet_directory_uri(); ?>/js/bootstrap/affix.js"></script>
     <script src="<?php echo get_stylesheet_directory_uri(); ?>/js/bootstrap/alert.js"></script>
     <script src="<?php echo get_stylesheet_directory_uri(); ?>/js/bootstrap/button.js"></script>

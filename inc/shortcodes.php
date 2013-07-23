@@ -9,6 +9,15 @@ function bootstrap_glyph_icons_shortcode($atts, $content = null)
 }
 
 /**
+ * Custom shortcode to render a <hr />
+ */
+function hr_shortcode()
+{
+	return '<hr />';
+}
+
+
+/**
  * Custom shortcode to produce the contact us button in content [contact text="" pageid=""]
  * @param array $atts
  */
@@ -530,6 +539,7 @@ function columns_shortcode($atts, $content = null) {
 
 
 // load shortcodes
+add_shortcode('hr', 'hr_shortcode');
 add_shortcode('icon', 'bootstrap_glyph_icons');
 add_shortcode('contact', 'contact_us_shortcode');
 //remove_shortcode('gallery', 'gallery_shortcode');
